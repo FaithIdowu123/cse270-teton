@@ -1,3 +1,5 @@
+import os
+
 import pytest
 import json
 
@@ -28,7 +30,8 @@ def test_get_seven_letter_word(mocker):
   mock_input.assert_called_once_with("Please enter a word with at least 7 letters: ")
 
 def test_parse_json_from_file():
-  file_path = "word_lists.json"
+  BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+  file_path = os.path.join(BASE_DIR, "word_lists.json")
 
   with open(file_path, 'r') as file:
     json_data = json.load(file)
